@@ -3,8 +3,9 @@
     {{ open ? "chevron_left" : "chevron_right" }}</mat-icon
   >
   <nav class="nav-content__nav-bar" [ngClass]="navStyle">
-    <mat-icon>search</mat-icon>
-    <mat-icon>settings</mat-icon>
-    <mat-icon>account_box</mat-icon>
+    <mat-icon [routerLink]="['/search']">search</mat-icon>
+    <mat-icon [routerLink]="['/account']">settings</mat-icon>
+    <mat-icon [routerLink]="['/account']">account_box</mat-icon>
+    <mat-icon [routerLink]="['/home']">info</mat-icon>
   </nav>
 </div>

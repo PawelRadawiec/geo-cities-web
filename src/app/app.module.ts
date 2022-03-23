@@ -12,6 +12,8 @@ import { HomeComponent } from './components/pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SearchCitiesComponent } from './components/pages/search-cities/search-cities.component';
+import { AccountComponent } from './components/pages/account/account.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MatButtonModule } from '@angular/material/button';
     SidebarComponent,
     NavComponent,
     HomeComponent,
+    SearchCitiesComponent,
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
