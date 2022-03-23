@@ -1,12 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-
 * {
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: sans-serif;
+.mat-typography {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
+.mat-typography p {
+  margin: 0;
 }
 
 .container {
@@ -36,5 +40,11 @@ app-footer {
   background-color: #ff6b6b;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
