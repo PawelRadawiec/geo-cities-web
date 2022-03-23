@@ -9,6 +9,9 @@ import { MainComponent } from './components/layout/main/main.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { NavComponent } from './components/layout/nav/nav.component';
 import { HomeComponent } from './components/pages/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,16 @@ import { HomeComponent } from './components/pages/home/home.component';
     MainComponent,
     SidebarComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,3 +1,10 @@
-<nav>
-   <p>nav</p>
-</nav>
+<div class="nav-content">
+  <mat-icon class="nav-content__icon" (click)="toggle()">
+    {{ open ? "chevron_left" : "chevron_right" }}</mat-icon
+  >
+  <nav class="nav-content__nav-bar" [ngClass]="navStyle">
+    <mat-icon>search</mat-icon>
+    <mat-icon>settings</mat-icon>
+    <mat-icon>account_box</mat-icon>
+  </nav>
+</div>

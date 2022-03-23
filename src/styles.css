@@ -1,16 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
-body {
+
+* {
   margin: 0;
   padding: 0;
+}
+
+body {
   font-family: sans-serif;
-  background-color: #e4f0ff;
 }
 
 .container {
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 50px 1fr 50px;
-  row-gap: 3px;
+  row-gap: 8px;
   height: 100vh;
 }
 
@@ -21,7 +24,6 @@ app-header {
 
 app-nav {
   grid-row: 2 / 3;
-  background-color: #ff6b6b;
 }
 
 app-main {
@@ -33,3 +35,6 @@ app-footer {
   grid-row: 3 / 4;
   background-color: #ff6b6b;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
