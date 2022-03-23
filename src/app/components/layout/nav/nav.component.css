@@ -6,6 +6,7 @@
 
 .nav-content__icon {
     margin-left: 24px;
+    color: #fff;
 }
 
 .nav-content__nav-bar {
@@ -26,7 +27,7 @@
 }
 
 .nav-content__nav-bar--open {
-  background-color: #ff6b6b;
+  background-color: #e91e63;
   opacity: 1;
   width: 40px;
   visibility: visible;

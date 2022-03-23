@@ -14,6 +14,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SearchCitiesComponent } from './components/pages/search-cities/search-cities.component';
 import { AccountComponent } from './components/pages/account/account.component';
+import { SearchFormComponent } from './components/modules/cities/search-form/search-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { InputComponent } from './components/modules/shared/input/input.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,8 @@ import { AccountComponent } from './components/pages/account/account.component';
     HomeComponent,
     SearchCitiesComponent,
     AccountComponent,
+    SearchFormComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +39,8 @@ import { AccountComponent } from './components/pages/account/account.component';
     BrowserAnimationsModule,
     MatIconModule,
     MatButtonModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

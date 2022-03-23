@@ -1,0 +1,11 @@
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <input
+    matInput
+    [value]="value"
+    (input)="onChange($event?.target?.value)"
+    (blur)="onTouch()"
+    [placeholder]="placeholder"
+    appearance="fill"
+  />
+</mat-form-field>
