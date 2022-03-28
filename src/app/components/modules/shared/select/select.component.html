@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select (selectionChange)="selectionChange($event)">
+    <mat-option *ngFor="let item of data" [value]="item[bindBy]">
+      {{ item[bindLabel] }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

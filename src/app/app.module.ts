@@ -19,7 +19,9 @@ import { MatInputModule } from '@angular/material/input';
 import { InputComponent } from './components/modules/shared/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './components/modules/shared/chips/chips.component';
+import { SelectComponent } from './components/modules/shared/select/select.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { ChipsComponent } from './components/modules/shared/chips/chips.componen
     SearchFormComponent,
     InputComponent,
     ChipsComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { ChipsComponent } from './components/modules/shared/chips/chips.componen
     MatInputModule,
     ReactiveFormsModule,
     MatChipsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
