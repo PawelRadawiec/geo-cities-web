@@ -1,7 +1,61 @@
-<form [formGroup]="searchForm">
-  <app-input
-    [label]="'City'"
-    [placeholder]="'Gdansk'"
-    formControlName="city"
-  ></app-input>
-</form>
+<div class="content">
+  <form [formGroup]="searchForm" class="search-form">
+    <app-input
+      [label]="'Name'"
+      [placeholder]="'Gdansk'"
+      formControlName="namePrefix"
+    ></app-input>
+
+    <app-input
+      [label]="'Location'"
+      [placeholder]="'±DD.DDDD±DDD.DDDD'"
+      formControlName="location"
+    ></app-input>
+
+    <app-chips
+      [label]="'Country ids'"
+      [placeholder]="'Country id'"
+      formControlName="countryIds"
+    ></app-chips>
+
+    <app-chips
+      [label]="'Excluded country ids'"
+      [placeholder]="'Country id'"
+      formControlName="excludedCountryIds"
+    ></app-chips>
+
+    <app-input
+      [label]="'Min population'"
+      [placeholder]="'100'"
+      formControlName="minPopulation"
+    ></app-input>
+
+    <app-select
+      [label]="'Sort by'"
+      [data]="sortMockData"
+      [bindBy]="'code'"
+      [bindLabel]="'text'"
+      formControlName="sort"
+    ></app-select>
+
+    <app-select
+      [label]="'Timezone'"
+      [data]="timezoneMockData"
+      [bindBy]="'code'"
+      [bindLabel]="'text'"
+      formControlName="timezone"
+    ></app-select>
+
+    <app-select
+      [label]="'Limit'"
+      [data]="limitMockData"
+      [bindBy]="'value'"
+      [bindLabel]="'text'"
+      formControlName="limit"
+    ></app-select>
+
+    <button class="search-form__button" mat-raised-button color="primary">
+      Search
+    </button>
+  </form>
+</div>

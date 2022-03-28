@@ -18,6 +18,10 @@ import { SearchFormComponent } from './components/modules/cities/search-form/sea
 import { MatInputModule } from '@angular/material/input';
 import { InputComponent } from './components/modules/shared/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
+import { ChipsComponent } from './components/modules/shared/chips/chips.component';
+import { SelectComponent } from './components/modules/shared/select/select.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AccountComponent,
     SearchFormComponent,
     InputComponent,
+    ChipsComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
