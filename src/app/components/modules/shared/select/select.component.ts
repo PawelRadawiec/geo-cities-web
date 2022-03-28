@@ -23,7 +23,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   value: any;
   onChange: (value: any) => void;
-  onTouch: any;
+  onTouch: (value: any) => void;
 
   constructor() {}
 
