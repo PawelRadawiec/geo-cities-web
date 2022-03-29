@@ -22,6 +22,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './components/modules/shared/chips/chips.component';
 import { SelectComponent } from './components/modules/shared/select/select.component';
+import { CitiesResultListComponent } from './components/modules/cities/cities-result-list/cities-result-list.component';
+import { CityCardComponent } from './components/modules/cities/city-card/city-card.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { SelectComponent } from './components/modules/shared/select/select.compo
     InputComponent,
     ChipsComponent,
     SelectComponent,
+    CitiesResultListComponent,
+    CityCardComponent,
   ],
   imports: [
     BrowserModule,

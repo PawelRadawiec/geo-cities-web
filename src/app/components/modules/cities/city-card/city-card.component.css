@@ -1,0 +1,43 @@
+.card {
+    width: 200px;
+    height: 200px;
+    border: 2px solid #e64980;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .card__title {
+    font-size: 24px;
+    margin-right: 5px;
+  }
+  
+  .card__button {
+    margin-left: auto;
+  }
+  
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .card__info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .card__info--flag {
+    margin-left: 5px;
+    font-size: 18px;
+  }
+  
+  .card__info--icon {
+    margin-right: 5px;
+  }
+  
