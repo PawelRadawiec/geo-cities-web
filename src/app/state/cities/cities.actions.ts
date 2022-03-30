@@ -1,14 +1,15 @@
+import { CitiesFilters } from 'src/app/common/models/cities-filters.model';
 import { City } from 'src/app/common/models/city.model';
 
 export namespace CitiesActions {
   export class GetAllRequest {
-    static type = '[Cities] GetAll';
+    static readonly type = '[Cities] GetAll';
 
     constructor(public filters: any) {}
   }
 
   export class SetCities {
-    static type = '[Cities] SetCities';
+    static readonly type = '[Cities] SetCities';
 
     constructor(public cities: City[]) {}
   }

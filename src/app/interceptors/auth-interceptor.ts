@@ -16,8 +16,8 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const authReq = req.clone({
       headers: new HttpHeaders({
-        'X-RapidAPI-Host': 'host',
-        'X-RapidAPI-Key': 'apiKey'
+        'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
+        'X-RapidAPI-Key': '3a15b4bf5amshf869fd4e7deea76p18745djsnd55552c61695'
       }),
     });
     return next.handle(authReq);

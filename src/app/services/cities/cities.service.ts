@@ -12,6 +12,6 @@ export class CitiesService {
   constructor(private http: HttpClient) {}
 
   getAll(filters: any) {
-    return this.http.get<SearchCitiesResponse>(`${this.baseUrl}/cities`);
+    return this.http.get<SearchCitiesResponse>(`${this.baseUrl}/cities`, {params: filters});
   }
 }

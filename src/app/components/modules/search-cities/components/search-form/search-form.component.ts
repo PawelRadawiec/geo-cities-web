@@ -16,8 +16,10 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder, private store: Store) {}
 
   sortMockData = [
-    { code: 'TEST_1', text: 'Test 1' },
-    { code: 'TEST_2', text: 'Test 2' },
+    { code: 'countryCode', text: 'Country code' },
+    { code: 'elevation', text: 'Elevation' },
+    { code: 'name', text: 'Name' },
+    { code: 'population', text: 'Population' },
   ];
 
   timezoneMockData = [
@@ -45,14 +47,14 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.store.dispatch(new CitiesActions.GetAllRequest({}));
+    this.store.dispatch(new CitiesActions.GetAllRequest(this.searchForm.value));
   }
 
   initForm() {
     this.searchForm = this.fb.group({
       namePrefix: [],
       location: [],
-      countryIds: [[]],
+      countryIdsArray: [[]],
       excludedCountryIds: [[]],
       minPopulation: [],
       sort: [],
