@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -15,10 +16,7 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const authReq = req.clone({
-      headers: new HttpHeaders({
-        'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com',
-        'X-RapidAPI-Key': '3a15b4bf5amshf869fd4e7deea76p18745djsnd55552c61695'
-      }),
+      headers: new HttpHeaders(environment.rapidApiHeaders),
     });
     return next.handle(authReq);
   }
