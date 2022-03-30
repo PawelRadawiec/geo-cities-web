@@ -1,5 +1,7 @@
-<div class="content">
-  <ng-container *ngFor="let city of mockResults">
-    <app-city-card [city]="city"></app-city-card>
-  </ng-container>
+<div class="container">
+  <div class="content">
+    <ng-container *ngFor="let city of cities$ | async">
+      <app-city-card [city]="city"></app-city-card>
+    </ng-container>
+  </div>
 </div>

@@ -24,6 +24,10 @@ import { ChipsComponent } from './components/modules/shared/chips/chips.componen
 import { SelectComponent } from './components/modules/shared/select/select.component';
 import { CitiesResultListComponent } from './components/modules/cities/cities-result-list/cities-result-list.component';
 import { CityCardComponent } from './components/modules/cities/city-card/city-card.component';
+import { NgxsModule } from '@ngxs/store';
+import { CitiesState } from './state/cities/cities.state';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,12 +51,16 @@ import { CityCardComponent } from './components/modules/cities/city-card/city-ca
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxsModule.forRoot([CitiesState], {
+      developmentMode: !environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

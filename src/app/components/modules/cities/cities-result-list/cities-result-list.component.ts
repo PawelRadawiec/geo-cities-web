@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { City } from 'src/app/common/models/city.model';
+import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
 
 @Component({
   selector: 'app-cities-result-list',
@@ -7,32 +10,9 @@ import { City } from 'src/app/common/models/city.model';
   styleUrls: ['./cities-result-list.component.css'],
 })
 export class CitiesResultListComponent implements OnInit {
-  mockResults: City[] = [];
+  @Select(CitiesSelectors.cities) cities$: Observable<City[]>;
 
   constructor() {}
 
-  ngOnInit() {
-    this.appendMockResults();
-  }
-
-  appendMockResults() {
-    const city = {
-      id: 3350606,
-      wikiDataId: 'Q24668',
-      type: 'CITY',
-      city: 'Aixirivall',
-      name: 'Aixirivall',
-      country: 'Andorra',
-      countryCode: 'ad',
-      region: 'Sant Julià de Lòria',
-      regionCode: '06',
-      latitude: 42.46245,
-      longitude: 1.50209,
-      population: 0,
-    };
-
-    for (let i = 0; i < 15; i++) {
-      this.mockResults.push(city);
-    }
-  }
+  ngOnInit() {}
 }
