@@ -14,7 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SearchCitiesComponent } from './components/modules/search-cities/search-cities.component';
 import { AccountComponent } from './components/modules/account/account.component';
-import { SearchFormComponent } from './components/modules/search-cities/search-form/search-form.component';
+import { SearchFormComponent } from './components/modules/search-cities/components/search-form/search-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { InputComponent } from './components/modules/shared/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,12 +22,13 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './components/modules/shared/chips/chips.component';
 import { SelectComponent } from './components/modules/shared/select/select.component';
-import { CitiesResultListComponent } from './components/modules/search-cities/cities-result-list/cities-result-list.component';
-import { CityCardComponent } from './components/modules/search-cities/city-card/city-card.component';
 import { NgxsModule } from '@ngxs/store';
 import { CitiesState } from './state/cities/cities.state';
 import { environment } from 'src/environments/environment';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CitiesResultListComponent } from './components/modules/search-cities/components/cities-result-list/cities-result-list.component';
+import { CityCardComponent } from './components/modules/search-cities/components/city-card/city-card.component';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,13 @@ import { HttpClientModule } from '@angular/common/http';
       developmentMode: !environment.production,
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

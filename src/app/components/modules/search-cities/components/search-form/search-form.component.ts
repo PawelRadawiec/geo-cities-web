@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
+import { CitiesActions } from 'src/app/state/cities/cities.actions';
 
 @Component({
   selector: 'app-search-form',
@@ -11,7 +13,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   subscription = new Subscription();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private store: Store) {}
 
   sortMockData = [
     { code: 'TEST_1', text: 'Test 1' },
@@ -30,6 +32,23 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit() {
+    this.initForm();
+    this.subscription.add(
+      this.searchForm.get('sort')?.valueChanges.subscribe((sort) => {
+        console.log('sort: ', sort);
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  search() {
+    this.store.dispatch(new CitiesActions.GetAllRequest({}));
+  }
+
+  initForm() {
     this.searchForm = this.fb.group({
       namePrefix: [],
       location: [],
@@ -40,14 +59,5 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       timezone: [],
       limit: [5],
     });
-    this.subscription.add(
-      this.searchForm.get('sort')?.valueChanges.subscribe((sort) => {
-        console.log('sort: ', sort);
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
   }
 }

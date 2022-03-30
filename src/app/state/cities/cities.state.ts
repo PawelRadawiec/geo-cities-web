@@ -20,8 +20,8 @@ export class CitiesState {
     return this.citiesService
       .getAll(filters)
       .pipe(
-        mergeMap((cities) =>
-          this.store.dispatch(new CitiesActions.SetCities(cities))
+        mergeMap(({ data }) =>
+          this.store.dispatch(new CitiesActions.SetCities(data))
         )
       );
   }
@@ -32,24 +32,6 @@ export class CitiesState {
     { cities }: CitiesActions.SetCities
   ) {
     if (!cities) cities = [];
-    // for mock purpose
-    const city = {
-      id: 3350606,
-      wikiDataId: 'Q24668',
-      type: 'CITY',
-      city: 'Aixirivall',
-      name: 'Aixirivall',
-      country: 'Andorra',
-      countryCode: 'ad',
-      region: 'Sant Julià de Lòria',
-      regionCode: '06',
-      latitude: 42.46245,
-      longitude: 1.50209,
-      population: 0,
-    };
-    for (let i = 0; i < 12; i++) {
-      cities.push(city);
-    }
     ctx.patchState({
       cities,
     });

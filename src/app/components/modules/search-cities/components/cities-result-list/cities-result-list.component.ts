@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Select } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { City } from 'src/app/common/models/city.model';
-import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
 
 @Component({
   selector: 'app-cities-result-list',
@@ -10,7 +7,7 @@ import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
   styleUrls: ['./cities-result-list.component.css'],
 })
 export class CitiesResultListComponent implements OnInit {
-  @Select(CitiesSelectors.cities) cities$: Observable<City[]>;
+  @Input() cities: City[];
 
   constructor() {}
 
