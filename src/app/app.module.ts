@@ -29,6 +29,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CitiesResultListComponent } from './components/modules/search-cities/components/cities-result-list/cities-result-list.component';
 import { CityCardComponent } from './components/modules/search-cities/components/city-card/city-card.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { HttpCitiesService } from './services/cities/http-cities.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,9 @@ import { AuthInterceptor } from './interceptors/auth-interceptor';
       useClass: AuthInterceptor,
       multi: true
     },
+    {
+      provide: 'CitiesService', useClass: HttpCitiesService
+    }
   ],
   bootstrap: [AppComponent],
 })

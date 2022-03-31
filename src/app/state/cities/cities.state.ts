@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Action, State, StateContext, Store } from '@ngxs/store';
+import { Inject, Injectable } from '@angular/core';
+import { Action, State, StateContext } from '@ngxs/store';
 import { mergeMap } from 'rxjs';
-import { CitiesService } from 'src/app/services/cities/cities.service';
+import { CitiesService } from 'src/app/services/cities/cities-service';
 import { CitiesStateModel } from './cities-state.model';
 import { CitiesActions } from './cities.actions';
 
@@ -13,11 +13,11 @@ import { CitiesActions } from './cities.actions';
 })
 @Injectable()
 export class CitiesState {
-  constructor(private store: Store, private citiesService: CitiesService) {}
+  constructor(@Inject('CitiesService') private citiesService: CitiesService) {}
 
   @Action(CitiesActions.GetAllRequest)
   getAllRequest(
-    _: StateContext<CitiesStateModel>,
+    ctx: StateContext<CitiesStateModel>,
     { filters }: CitiesActions.GetAllRequest
   ) {
     for (const [key, value] of Object.entries(filters)) {
@@ -34,9 +34,7 @@ export class CitiesState {
     return this.citiesService
       .getAll(filters)
       .pipe(
-        mergeMap(({ data }) =>
-          this.store.dispatch(new CitiesActions.SetCities(data))
-        )
+        mergeMap(({ data }) => ctx.dispatch(new CitiesActions.SetCities(data)))
       );
   }
 
