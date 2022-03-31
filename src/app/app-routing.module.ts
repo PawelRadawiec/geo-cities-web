@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './components/modules/account/account.component';
-import { HomeComponent } from './components/modules/home/home.component';
-import { CitiesResolver } from './components/modules/search-cities/resolvers/cities.resolver';
-import { SearchCitiesComponent } from './components/modules/search-cities/search-cities.component';
+import { AccountComponent } from './pages/modules/account/account.component';
+import { HomeComponent } from './pages/modules/home/home.component';
+import { CitiesResolver } from './pages/modules/search-cities/resolvers/cities.resolver';
+import { SearchCitiesComponent } from './pages/modules/search-cities/search-cities.component';
 
 const routes: Routes = [
   {

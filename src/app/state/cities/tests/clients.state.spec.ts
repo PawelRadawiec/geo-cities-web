@@ -35,7 +35,7 @@ describe('CitiesStateTest', () => {
     expect(citiesService.getAll).toHaveBeenCalled();
   });
 
-  it('should disptach CitiesActions.SetCities, call', (done) => {
+  it('should disptach CitiesActions.SetCities', (done) => {
     const response = {} as SearchCitiesResponse;
     spyOn(citiesService, 'getAll').and.returnValue(of(response));
     actions$
