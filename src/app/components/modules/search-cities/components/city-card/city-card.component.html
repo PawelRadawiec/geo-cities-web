@@ -1,0 +1,32 @@
+<div class="card">
+  <div class="card__header">
+    <p class="card__title">{{ city?.name }}</p>
+    <button
+      class="card__button"
+      mat-icon-button
+      disabled
+      aria-label="Example icon button with a open in new tab icon"
+    >
+      <mat-icon>open_in_new</mat-icon>
+    </button>
+  </div>
+
+  <div class="card__content">
+    <div class="card__info">
+      <p>{{ city?.country }}</p>
+      <span
+        [ngClass]="'card__info--flag fi fi-' + city?.countryCode?.toLowerCase()"
+      ></span>
+    </div>
+
+    <div class="card__info">
+      <mat-icon class="card__info--icon">public</mat-icon>
+      <p>{{ city?.region }}</p>
+    </div>
+
+    <div class="card__info">
+      <mat-icon class="card__info--icon">groups</mat-icon>
+      <p>{{ city?.population }}</p>
+    </div>
+  </div>
+</div>

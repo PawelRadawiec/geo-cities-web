@@ -1,0 +1,8 @@
+<app-search-form
+  [sortData]="sortData"
+  [timezoneData]="timezoneData"
+  [limitData]="limitData"
+  (onSearch)="search($event)"
+></app-search-form>
+
+<app-cities-result-list [cities]="cities$ | async"></app-cities-result-list>

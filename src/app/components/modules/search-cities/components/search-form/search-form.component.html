@@ -1,5 +1,5 @@
 <div class="content">
-  <form [formGroup]="searchForm" class="search-form">
+  <form [formGroup]="searchForm" class="search-form" (ngSubmit)="search()">
     <app-input
       [label]="'Name'"
       [placeholder]="'Gdansk'"
@@ -15,7 +15,7 @@
     <app-chips
       [label]="'Country ids'"
       [placeholder]="'Country id'"
-      formControlName="countryIds"
+      formControlName="countryIdsArray"
     ></app-chips>
 
     <app-chips
@@ -32,7 +32,7 @@
 
     <app-select
       [label]="'Sort by'"
-      [data]="sortMockData"
+      [data]="sortData"
       [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="sort"
@@ -40,7 +40,7 @@
 
     <app-select
       [label]="'Timezone'"
-      [data]="timezoneMockData"
+      [data]="timezoneData"
       [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="timezone"
@@ -48,13 +48,13 @@
 
     <app-select
       [label]="'Limit'"
-      [data]="limitMockData"
-      [bindBy]="'value'"
+      [data]="limitData"
+      [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="limit"
     ></app-select>
 
-    <button class="search-form__button" mat-raised-button color="primary">
+    <button type="submit" class="search-form__button" mat-raised-button color="primary">
       Search
     </button>
   </form>

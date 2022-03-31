@@ -8,13 +8,13 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { MainComponent } from './components/layout/main/main.component';
 import { SidebarComponent } from './components/layout/sidebar/sidebar.component';
 import { NavComponent } from './components/layout/nav/nav.component';
-import { HomeComponent } from './components/pages/home/home.component';
+import { HomeComponent } from './components/modules/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SearchCitiesComponent } from './components/pages/search-cities/search-cities.component';
-import { AccountComponent } from './components/pages/account/account.component';
-import { SearchFormComponent } from './components/modules/cities/search-form/search-form.component';
+import { SearchCitiesComponent } from './components/modules/search-cities/search-cities.component';
+import { AccountComponent } from './components/modules/account/account.component';
+import { SearchFormComponent } from './components/modules/search-cities/components/search-form/search-form.component';
 import { MatInputModule } from '@angular/material/input';
 import { InputComponent } from './components/modules/shared/input/input.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,13 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 import { ChipsComponent } from './components/modules/shared/chips/chips.component';
 import { SelectComponent } from './components/modules/shared/select/select.component';
+import { NgxsModule } from '@ngxs/store';
+import { CitiesState } from './state/cities/cities.state';
+import { environment } from 'src/environments/environment';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CitiesResultListComponent } from './components/modules/search-cities/components/cities-result-list/cities-result-list.component';
+import { CityCardComponent } from './components/modules/search-cities/components/city-card/city-card.component';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -38,19 +45,31 @@ import { SelectComponent } from './components/modules/shared/select/select.compo
     InputComponent,
     ChipsComponent,
     SelectComponent,
+    CitiesResultListComponent,
+    CityCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatInputModule,
     ReactiveFormsModule,
     MatChipsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgxsModule.forRoot([CitiesState], {
+      developmentMode: !environment.production,
+    }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

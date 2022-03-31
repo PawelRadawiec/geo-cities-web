@@ -2,8 +2,14 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+// copy and rename this file into environment.ts and environment.prod.ts
+
 export const environment = {
-  production: false
+  production: false,
+  rapidApiHeaders: {
+    'X-RapidAPI-Host': 'HOST',
+    'X-RapidAPI-Key': 'KEY',
+  }
 };
 
 /*
