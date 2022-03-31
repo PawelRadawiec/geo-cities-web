@@ -32,7 +32,7 @@
 
     <app-select
       [label]="'Sort by'"
-      [data]="sortMockData"
+      [data]="sortData"
       [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="sort"
@@ -40,7 +40,7 @@
 
     <app-select
       [label]="'Timezone'"
-      [data]="timezoneMockData"
+      [data]="timezoneData"
       [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="timezone"
@@ -48,8 +48,8 @@
 
     <app-select
       [label]="'Limit'"
-      [data]="limitMockData"
-      [bindBy]="'value'"
+      [data]="limitData"
+      [bindBy]="'code'"
       [bindLabel]="'text'"
       formControlName="limit"
     ></app-select>

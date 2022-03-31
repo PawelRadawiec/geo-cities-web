@@ -1,8 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
-import { CitiesActions } from 'src/app/state/cities/cities.actions';
+import { Dictionary } from 'src/app/common/models/dictionay.model';
 
 @Component({
   selector: 'app-search-form',
@@ -10,28 +16,15 @@ import { CitiesActions } from 'src/app/state/cities/cities.actions';
   styleUrls: ['./search-form.component.css'],
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
+  @Input() sortData: Dictionary[];
+  @Input() timezoneData: Dictionary[];
+  @Input() limitData: Dictionary[];
+  @Output() onSearch = new EventEmitter();
+
   searchForm: FormGroup;
   subscription = new Subscription();
 
-  constructor(private fb: FormBuilder, private store: Store) {}
-
-  sortMockData = [
-    { code: 'countryCode', text: 'Country code' },
-    { code: 'elevation', text: 'Elevation' },
-    { code: 'name', text: 'Name' },
-    { code: 'population', text: 'Population' },
-  ];
-
-  timezoneMockData = [
-    { code: 'TEST_1', text: 'Test 1' },
-    { code: 'TEST_2', text: 'Test 2' },
-  ];
-
-  limitMockData = [
-    { value: 5, text: '5' },
-    { value: 10, text: '10' },
-    { value: 50, text: '50' },
-  ];
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();
@@ -47,7 +40,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    this.store.dispatch(new CitiesActions.GetAllRequest(this.searchForm.value));
+    this.onSearch.emit(this.searchForm.value);
   }
 
   initForm() {
@@ -59,7 +52,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       minPopulation: [],
       sort: [],
       timezone: [],
-      limit: [5],
+      limit: [],
     });
   }
 }
