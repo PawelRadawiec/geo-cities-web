@@ -1,7 +1,10 @@
 <div class="container">
   <div class="content">
     <ng-container *ngFor="let city of cities">
-      <app-city-card (openInNew)="openInNew($event)" [city]="city"></app-city-card>
+      <app-city-card
+        [city]="city"
+        (openInNew)="openInNew($event)"
+      ></app-city-card>
     </ng-container>
   </div>
 </div>

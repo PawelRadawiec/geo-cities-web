@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { City } from 'src/app/common/models/city.model';
-import { AsideService } from 'src/app/services/aside.service';
-import { CityDetailsComponent } from '../../../aside/city-details/city-details.component';
+
 
 @Component({
   selector: 'app-cities-result-list',
@@ -10,15 +9,14 @@ import { CityDetailsComponent } from '../../../aside/city-details/city-details.c
 })
 export class CitiesResultListComponent implements OnInit {
   @Input() cities: City[];
+  @Output() openInNewEvent = new EventEmitter();
 
-  constructor(private asideService: AsideService) {}
+  constructor() {}
 
   ngOnInit() {}
 
   openInNew(city: City) {
-    this.asideService.openAside({
-      component: CityDetailsComponent,
-      data: city,
-    });
+    this.openInNewEvent.emit(city);
   }
-}
+
+ }

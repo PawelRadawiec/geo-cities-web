@@ -33,6 +33,7 @@ import { HttpCitiesService } from './services/cities/http-cities.service';
 import { CityDetailsComponent } from './pages/modules/aside/city-details/city-details.component';
 import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.component';
 import { AsideDirective } from './directives/aside.directive';
+import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/components/cities-result-list-wrapper/cities-result-list-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AsideDirective } from './directives/aside.directive';
     CityCardComponent,
     CityDetailsComponent,
     MainAsideComponent,
-    AsideDirective
+    AsideDirective,
+    CitiesResultListWrapperComponent
   ],
   imports: [
     BrowserModule,
