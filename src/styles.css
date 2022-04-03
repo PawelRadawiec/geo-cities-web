@@ -21,10 +21,15 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 100px 1fr 1fr;
   grid-template-rows: 50px 1fr 50px;
   row-gap: 8px;
   height: 100vh;
+
+  grid-template-areas:
+    "header header header"
+    "nav content content"
+    "footer footer footer";
 }
 
 .aside {
@@ -38,21 +43,20 @@ body {
 }
 
 app-header {
-  grid-column: 1/-1;
+  grid-area: header;
   background-color: #e91e63;
 }
 
 app-nav {
-  grid-row: 2 / 3;
+  grid-area: nav;
 }
 
 app-main {
-  grid-row: 2 / 3;
+  grid-area: content;
 }
 
 app-footer {
-  grid-column: 1 / -1;
-  grid-row: 3 / 4;
+  grid-area: footer;
   background-color: #e91e63;
 }
 
