@@ -30,6 +30,9 @@ import { CitiesResultListComponent } from './pages/modules/search-cities/compone
 import { CityCardComponent } from './pages/modules/search-cities/components/city-card/city-card.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpCitiesService } from './services/cities/http-cities.service';
+import { CityDetailsComponent } from './pages/modules/aside/city-details/city-details.component';
+import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.component';
+import { AsideDirective } from './directives/aside.directive';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { HttpCitiesService } from './services/cities/http-cities.service';
     SelectComponent,
     CitiesResultListComponent,
     CityCardComponent,
+    CityDetailsComponent,
+    MainAsideComponent,
+    AsideDirective
   ],
   imports: [
     BrowserModule,
