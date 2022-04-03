@@ -13,4 +13,16 @@ export namespace CitiesActions {
 
     constructor(public cities: City[]) {}
   }
+
+  export class GetDetailsRequest {
+    static readonly type = '[Cities] GetDetailsRequest';
+
+    constructor(public id: number) {}
+  }
+
+  export class GetDetailsResponse {
+    static readonly type = '[Cities] GetDetailsResponse';
+
+    constructor(public city: any) {}
+  }
 }

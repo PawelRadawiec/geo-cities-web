@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { City } from 'src/app/common/models/city.model';
 
-
 @Component({
   selector: 'app-cities-result-list',
   templateUrl: './cities-result-list.component.html',
@@ -16,7 +15,6 @@ export class CitiesResultListComponent implements OnInit {
   ngOnInit() {}
 
   openInNew(city: City) {
-    this.openInNewEvent.emit(city);
+    this.openInNewEvent.next(city);
   }
-
- }
+}

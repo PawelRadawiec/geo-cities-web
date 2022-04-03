@@ -1,8 +1,7 @@
 import { Component, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { AsideDirective } from 'src/app/directives/aside.directive';
 import { AsideService } from 'src/app/services/aside.service';
-import { CityDetailsComponent } from '../city-details/city-details.component';
 
 export interface AsideData {
   component: Type<any>;
@@ -42,9 +41,7 @@ export class MainAsideComponent implements OnInit, OnDestroy {
   private handleOpenSubject(asideData: AsideData) {
     const viewContainerRef = this.asideDirective.viewContainerRef;
     viewContainerRef.clear();
-    const componentRef = viewContainerRef.createComponent<CityDetailsComponent>(
-      asideData.component
-    );
+    const componentRef = viewContainerRef.createComponent(asideData.component);
     componentRef.instance.data = asideData.data;
   }
 

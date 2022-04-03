@@ -3,4 +3,5 @@ import { SearchCitiesResponse } from 'src/app/common/models/search-cities-respon
 
 export interface CitiesService {
   getAll(filters: any): Observable<SearchCitiesResponse>;
+  getById(id: number): Observable<any>;
 }
