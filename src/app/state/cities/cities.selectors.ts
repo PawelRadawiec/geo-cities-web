@@ -8,4 +8,9 @@ export class CitiesSelectors {
     const cities = state.cities;
     return cities ? cities : [];
   }
+
+  @Selector([CitiesState])
+  static cityDetails(state: CitiesStateModel) {
+    return state.cityDetails;
+  }
 }

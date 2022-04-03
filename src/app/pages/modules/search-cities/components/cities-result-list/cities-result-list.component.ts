@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { City } from 'src/app/common/models/city.model';
 
 @Component({
@@ -8,8 +8,13 @@ import { City } from 'src/app/common/models/city.model';
 })
 export class CitiesResultListComponent implements OnInit {
   @Input() cities: City[];
+  @Output() openInNewEvent = new EventEmitter();
 
   constructor() {}
 
   ngOnInit() {}
+
+  openInNew(city: City) {
+    this.openInNewEvent.next(city);
+  }
 }

@@ -8,6 +8,7 @@ import { CitiesActions } from './cities.actions';
 @State<CitiesStateModel>({
   name: 'cities',
   defaults: {
+    cityDetails: null,
     cities: [],
   },
 })
@@ -46,6 +47,30 @@ export class CitiesState {
     if (!cities) cities = [];
     ctx.patchState({
       cities,
+    });
+  }
+
+  @Action(CitiesActions.GetDetailsRequest)
+  getDetailsRequest(
+    ctx: StateContext<CitiesStateModel>,
+    { id }: CitiesActions.GetDetailsRequest
+  ) {
+    return this.citiesService
+      .getById(id)
+      .pipe(
+        mergeMap((response) =>
+          ctx.dispatch(new CitiesActions.GetDetailsResponse(response?.data))
+        )
+      );
+  }
+
+  @Action(CitiesActions.GetDetailsResponse)
+  getDetailsResponse(
+    ctx: StateContext<CitiesStateModel>,
+    { city }: CitiesActions.GetDetailsResponse
+  ) {
+    ctx.patchState({
+      cityDetails: city,
     });
   }
 }
