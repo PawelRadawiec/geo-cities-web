@@ -1,9 +1,24 @@
-.city-aside {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  width: 300px;
-  height: 400px;
-  background-color: beige;
+.aside__header {
+  display: flex;
+  justify-content: end;
+}
+
+.aside__content {
+  padding: 24px;
+}
+
+.aside__content__header {
+  margin-bottom: 24px;
+}
+
+.aside__content--details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1 fr);
+  row-gap: 25px;
+  margin-bottom: 54px;
+}
+
+.details__title {
+  
 }

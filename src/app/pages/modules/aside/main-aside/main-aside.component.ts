@@ -1,5 +1,5 @@
-import { Component, OnInit, Type, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit, Type, ViewChild } from '@angular/core';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { AsideDirective } from 'src/app/directives/aside.directive';
 import { AsideService } from 'src/app/services/aside.service';
 import { CityDetailsComponent } from '../city-details/city-details.component';
@@ -14,24 +14,29 @@ export interface AsideData {
   templateUrl: './main-aside.component.html',
   styleUrls: ['./main-aside.component.css'],
 })
-export class MainAsideComponent implements OnInit {
+export class MainAsideComponent implements OnInit, OnDestroy {
   @ViewChild(AsideDirective, { static: true }) asideDirective: AsideDirective;
-
-  subscription = new Subscription();
+  destroy$ = new Subject<boolean>();
 
   constructor(private asideService: AsideService) {}
 
   ngOnInit() {
-    this.subscription.add(
-      this.asideService.openSubject.subscribe((asideData: AsideData) => {
+    this.asideService.openSubject
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((asideData: AsideData) => {
         this.handleOpenSubject(asideData);
-      })
-    );
-    this.subscription.add(
-      this.asideService.closeSubject.subscribe(() => {
+      });
+
+    this.asideService.closeSubject
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
         this.handleCloseSubject();
-      })
-    );
+      });
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
   }
 
   private handleOpenSubject(asideData: AsideData) {

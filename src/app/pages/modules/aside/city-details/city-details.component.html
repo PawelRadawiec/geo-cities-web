@@ -1,11 +1,21 @@
-<div class="city-aside">
-  <button
-      mat-icon-button
-      (click)="close()"
-    >
+<div class="aside">
+  <div class="aside__header">
+    <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
-  <p>{{data?.name}}</p>
-  <p>aside content</p>
-  <p>aside footer</p>
+  </div>
+  <div class="aside__content">
+    <h2 class="aside__content__header">Information</h2>
+    <div class="aside__content--details">
+      <p><span>Name:</span> {{ data?.name }}</p>
+      <p><span>Type:</span> {{ data?.type }}</p>
+      <p><span>City:</span> {{ data?.city }}</p>
+      <p><span>Country:</span> {{ data?.country }}</p>
+      <p><span>Country code:</span> {{ data?.countryCode }}</p>
+      <p><span>Latitude:</span> {{ data?.latitude }}</p>
+      <p><span>Longitude:</span> {{ data?.longitude }}</p>
+      <p><span></span>Population: {{ data?.population }}</p>
+    </div>
+    <h2 class="aside__content__header">Localization</h2>
+  </div>
 </div>
