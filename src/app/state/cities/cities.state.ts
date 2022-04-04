@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { mergeMap } from 'rxjs';
+import { CITIES_SERVICE_TOKEN } from 'src/app/app.module';
 import { CitiesService } from 'src/app/services/cities/cities-service';
 import { CitiesStateModel } from './cities-state.model';
 import { CitiesActions } from './cities.actions';
@@ -14,7 +15,7 @@ import { CitiesActions } from './cities.actions';
 })
 @Injectable()
 export class CitiesState {
-  constructor(@Inject('CitiesService') private citiesService: CitiesService) {}
+  constructor(@Inject(CITIES_SERVICE_TOKEN) private citiesService: CitiesService) {}
 
   @Action(CitiesActions.GetAllRequest)
   getAllRequest(

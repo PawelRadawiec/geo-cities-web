@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -35,6 +35,8 @@ import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.
 import { AsideDirective } from './directives/aside.directive';
 import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/components/cities-result-list-wrapper/cities-result-list-wrapper.component';
 
+export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,7 @@ import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/
     CityDetailsComponent,
     MainAsideComponent,
     AsideDirective,
-    CitiesResultListWrapperComponent
+    CitiesResultListWrapperComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,11 +78,12 @@ import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
-      provide: 'CitiesService', useClass: HttpCitiesService
-    }
+      provide: CITIES_SERVICE_TOKEN,
+      useClass: HttpCitiesService,
+    },
   ],
   bootstrap: [AppComponent],
 })
