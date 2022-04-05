@@ -22,17 +22,17 @@ export class CitiesState {
     ctx: StateContext<CitiesStateModel>,
     { filters }: CitiesActions.GetAllRequest
   ) {
-    for (const [key, value] of Object.entries(filters)) {
-      if (!value) delete filters[key];
-    }
-    if (filters?.countryIdsArray) {
-      filters.countryIds = filters.countryIdsArray.join(',');
-      delete filters.countryIdsArray;
-    }
-    if (filters?.excludedCountryIdsArray) {
-      filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
-      delete filters.excludedCountryIdsArray;
-    }
+    // for (const [key, value] of Object.entries(filters)) {
+    //   if (!value) delete filters[key];
+    // }
+    // if (filters?.countryIdsArray) {
+    //   filters.countryIds = filters.countryIdsArray.join(',');
+    //   delete filters.countryIdsArray;
+    // }
+    // if (filters?.excludedCountryIdsArray) {
+    //   filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
+    //   delete filters.excludedCountryIdsArray;
+    // }
     return this.citiesService
       .getAll(filters)
       .pipe(

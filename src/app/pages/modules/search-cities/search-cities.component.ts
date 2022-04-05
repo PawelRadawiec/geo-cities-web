@@ -1,36 +1,64 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
+import { Dictionary } from 'src/app/common/models/dictionay.model';
+import { SearchCitiesFormService } from 'src/app/services/search-cities-form.service';
 import { CitiesActions } from 'src/app/state/cities/cities.actions';
 
 @Component({
   selector: 'app-search-cities',
   templateUrl: './search-cities.component.html',
   styleUrls: ['./search-cities.component.css'],
+  providers: [SearchCitiesFormService],
 })
 export class SearchCitiesComponent implements OnInit {
-  sortData = [
-    { code: 'countryCode', text: 'Country code' },
-    { code: 'elevation', text: 'Elevation' },
-    { code: 'name', text: 'Name' },
-    { code: 'population', text: 'Population' },
-  ];
+  searchForm: FormGroup;
+  sortData: Dictionary[];
+  timezoneData: Dictionary[];
+  limitData: Dictionary[];
 
-  timezoneData = [
-    { code: 'TEST_1', text: 'Test 1' },
-    { code: 'TEST_2', text: 'Test 2' },
-  ];
+  constructor(
+    private store: Store,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private formService: SearchCitiesFormService
+  ) {}
 
-  limitData = [
-    { code: '5', text: '5' },
-    { code: '10', text: '10' },
-    { code: '50', text: '50' },
-  ];
+  ngOnInit() {
+    this.initSearchFormData();
+    this.activatedRoute.params.subscribe((params) => {
+      this.handlAactivatedRouteParams(params);
+    });
+  }
 
-  constructor(private store: Store) {}
+  initSearchFormData() {
+    this.searchForm = this.formService.createform();
+    this.sortData = this.formService.sortData;
+    this.timezoneData = this.formService.timezoneData;
+    this.limitData = this.formService.limitData;
+  }
 
-  ngOnInit() {}
+  handlAactivatedRouteParams(params: any) {
+    if (!params['namePrefix']) {
+      return;
+    }
+    this.formService.appendForm(params);
+    this.store.dispatch(new CitiesActions.GetAllRequest(params));
+  }
 
   search(filters: any) {
-    this.store.dispatch(new CitiesActions.GetAllRequest(filters));
+    for (const [key, value] of Object.entries(filters)) {
+      if (!value) delete filters[key];
+    }
+    if (filters?.countryIdsArray) {
+      filters.countryIds = filters.countryIdsArray.join(',');
+      delete filters.countryIdsArray;
+    }
+    if (filters?.excludedCountryIdsArray) {
+      filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
+      delete filters.excludedCountryIdsArray;
+    }
+    this.router.navigate(['search', filters]);
   }
 }

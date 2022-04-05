@@ -16,6 +16,7 @@ import { Dictionary } from 'src/app/common/models/dictionay.model';
   styleUrls: ['./search-form.component.css'],
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
+  @Input() form: FormGroup;
   @Input() sortData: Dictionary[];
   @Input() timezoneData: Dictionary[];
   @Input() limitData: Dictionary[];
@@ -44,15 +45,17 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   initForm() {
-    this.searchForm = this.fb.group({
-      namePrefix: [],
-      location: [],
-      countryIdsArray: [[]],
-      excludedCountryIds: [[]],
-      minPopulation: [],
-      sort: [],
-      timezone: [],
-      limit: [],
-    });
+    this.searchForm = this.form
+      ? this.form
+      : this.fb.group({
+          namePrefix: [],
+          location: [],
+          countryIdsArray: [[]],
+          excludedCountryIds: [[]],
+          minPopulation: [],
+          sort: [],
+          timezone: [],
+          limit: [],
+        });
   }
 }
