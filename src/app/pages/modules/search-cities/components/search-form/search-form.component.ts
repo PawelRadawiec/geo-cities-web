@@ -2,9 +2,11 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
+  SimpleChanges,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -15,7 +17,7 @@ import { Dictionary } from 'src/app/common/models/dictionay.model';
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css'],
 })
-export class SearchFormComponent implements OnInit, OnDestroy {
+export class SearchFormComponent implements OnInit, OnChanges, OnDestroy {
   @Input() form: FormGroup;
   @Input() sortData: Dictionary[];
   @Input() timezoneData: Dictionary[];
@@ -34,6 +36,12 @@ export class SearchFormComponent implements OnInit, OnDestroy {
         console.log('sort: ', sort);
       })
     );
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['form']) {
+      this.initForm();
+    }
   }
 
   ngOnDestroy() {

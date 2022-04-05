@@ -40,7 +40,7 @@ export class SearchCitiesComponent implements OnInit {
   }
 
   handlAactivatedRouteParams(params: any) {
-    if (!params['namePrefix']) {
+    if (!params) {
       return;
     }
     this.formService.appendForm(params);

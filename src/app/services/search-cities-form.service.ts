@@ -33,10 +33,10 @@ export class SearchCitiesFormService {
     this._searchForm.get('location').setValue(params.location ?? null);
     this.searchForm
       .get('countryIdsArray')
-      .setValue(params.countryIdsArray ?? null);
+      .setValue(this.getCountryArray(params.countryIds));
     this._searchForm
       .get('excludedCountryIds')
-      .setValue(params.excludedCountryIds ?? null);
+      .setValue(this.getCountryArray(params.excludedCountryIds));
     this._searchForm
       .get('minPopulation')
       .setValue(params.minPopulation ?? null);
@@ -57,6 +57,10 @@ export class SearchCitiesFormService {
       limit: [],
     });
     return this._searchForm;
+  }
+
+  getCountryArray(countries: string) {
+    return countries?.match(/[A-Z][A-Z]/g) ?? [];
   }
 
   get searchForm() {
