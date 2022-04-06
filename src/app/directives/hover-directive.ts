@@ -17,6 +17,7 @@ export class HoverDirective {
 
   @HostListener('mouseenter')
   onMouseOver() {
+    this.renderer.setStyle(this.elementRef.nativeElement, 'transition', '0.3s');
     this.renderer.addClass(
       this.elementRef.nativeElement,
       this.config.hoverClass
