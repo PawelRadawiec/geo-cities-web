@@ -34,6 +34,7 @@ import { CityDetailsComponent } from './pages/modules/aside/city-details/city-de
 import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.component';
 import { AsideDirective } from './directives/aside.directive';
 import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/components/cities-result-list-wrapper/cities-result-list-wrapper.component';
+import { HoverDirective } from './directives/hover-directive';
 
 export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
 
@@ -58,6 +59,7 @@ export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
     MainAsideComponent,
     AsideDirective,
     CitiesResultListWrapperComponent,
+    HoverDirective
   ],
   imports: [
     BrowserModule,
