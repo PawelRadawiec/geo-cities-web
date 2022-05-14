@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from '../shared/shared.module';
-import { MainAsideComponent } from 'src/app/pages/modules/aside/main-aside/main-aside.component';
+import { MainAsideComponent } from 'src/app/modules/core/components/main-aside/main-aside.component';
 import { AccountComponent } from './components/account/account.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -14,7 +13,6 @@ import { MainComponent } from './components/main/main.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
-
 
 @NgModule({
   declarations: [
@@ -25,7 +23,8 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     MainAsideComponent,
     HomeComponent,
-    AccountComponent
+    AccountComponent,
+    MainAsideComponent,
   ],
   imports: [
     CommonModule,
@@ -33,7 +32,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     CommonModule,
@@ -47,7 +46,8 @@ import { RouterModule } from '@angular/router';
     NavComponent,
     MainAsideComponent,
     HomeComponent,
-    AccountComponent
-  ]
+    AccountComponent,
+    MainAsideComponent,
+  ],
 })
-export class CoreModule { }
+export class CoreModule {}

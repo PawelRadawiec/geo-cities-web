@@ -3,6 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { AsideDirective } from 'src/app/directives/aside.directive';
 import { AsideService } from 'src/app/services/aside.service';
 
+
 export interface AsideData {
   component: Type<any>;
   data: any;

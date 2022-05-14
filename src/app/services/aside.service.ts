@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CityDetailsComponent } from '../modules/cities/components/city-details/city-details.component';
-import { AsideData } from '../pages/modules/aside/main-aside/main-aside.component';
+import { AsideData } from '../modules/core/components/main-aside/main-aside.component';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +27,4 @@ export class AsideService {
   get closeSubject() {
     return this._closeSubject.asObservable();
   }
-
 }
