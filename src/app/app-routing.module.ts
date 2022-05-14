@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './pages/modules/account/account.component';
 import { HomeComponent } from './pages/modules/home/home.component';
-import { CitiesResolver } from './pages/modules/search-cities/resolvers/cities.resolver';
-import { SearchCitiesComponent } from './pages/modules/search-cities/search-cities.component';
 
 const routes: Routes = [
   {
@@ -11,13 +9,13 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'search',
-    component: SearchCitiesComponent,
-    resolve: [CitiesResolver],
-  },
-  {
     path: 'account',
     component: AccountComponent,
+  },
+  {
+    path: 'cities',
+    loadChildren: () =>
+      import('./modules/cities/cities.module').then((m) => m.CitiesModule),
   },
   {
     path: '**',
@@ -27,7 +25,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [CitiesResolver],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

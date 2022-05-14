@@ -5,7 +5,7 @@ import { City } from 'src/app/common/models/city.model';
 import { AsideService } from 'src/app/services/aside.service';
 import { CitiesActions } from 'src/app/state/cities/cities.actions';
 import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
-import { CityDetailsComponent } from '../../../aside/city-details/city-details.component';
+import { CityDetailsComponent } from '../../../../pages/modules/aside/city-details/city-details.component';
 
 @Component({
   selector: 'app-cities-result-list-wrapper',

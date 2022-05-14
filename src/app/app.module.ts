@@ -6,22 +6,18 @@ import { MainComponent } from './pages/layout/main/main.component';
 import { SidebarComponent } from './pages/layout/sidebar/sidebar.component';
 import { NavComponent } from './pages/layout/nav/nav.component';
 import { HomeComponent } from './pages/modules/home/home.component';
-import { SearchCitiesComponent } from './pages/modules/search-cities/search-cities.component';
 import { AccountComponent } from './pages/modules/account/account.component';
-import { SearchFormComponent } from './pages/modules/search-cities/components/search-form/search-form.component';
 import { NgxsModule } from '@ngxs/store';
 import { CitiesState } from './state/cities/cities.state';
 import { environment } from 'src/environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { CitiesResultListComponent } from './pages/modules/search-cities/components/cities-result-list/cities-result-list.component';
-import { CityCardComponent } from './pages/modules/search-cities/components/city-card/city-card.component';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpCitiesService } from './services/cities/http-cities.service';
 import { CityDetailsComponent } from './pages/modules/aside/city-details/city-details.component';
 import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.component';
-import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/components/cities-result-list-wrapper/cities-result-list-wrapper.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { CoreModule } from './modules/core/core.module';
+import { AppRoutingModule } from './app-routing.module';
 
 export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
 
@@ -34,18 +30,14 @@ export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
     SidebarComponent,
     NavComponent,
     HomeComponent,
-    SearchCitiesComponent,
     AccountComponent,
-    SearchFormComponent,
-    CitiesResultListComponent,
-    CityCardComponent,
     CityDetailsComponent,
     MainAsideComponent,
-    CitiesResultListWrapperComponent,
   ],
   imports: [
     CoreModule,
     SharedModule,
+    AppRoutingModule,
     NgxsModule.forRoot([CitiesState], {
       developmentMode: !environment.production,
     }),

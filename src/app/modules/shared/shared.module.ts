@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AsideDirective } from 'src/app/directives/aside.directive';
 import { HoverDirective } from 'src/app/directives/hover-directive';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HoverDirective } from 'src/app/directives/hover-directive';
     MatSelectModule,
     HoverDirective,
     AsideDirective,
+    ReactiveFormsModule
   ],
   imports: [
     CommonModule,
@@ -38,6 +40,7 @@ import { HoverDirective } from 'src/app/directives/hover-directive';
     MatInputModule,
     MatChipsModule,
     MatSelectModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule {}
