@@ -26,6 +26,7 @@ import { CityDetailsComponent } from './pages/modules/aside/city-details/city-de
 import { MainAsideComponent } from './pages/modules/aside/main-aside/main-aside.component';
 import { CitiesResultListWrapperComponent } from './pages/modules/search-cities/components/cities-result-list-wrapper/cities-result-list-wrapper.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { CoreModule } from './modules/core/core.module';
 
 export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
 
@@ -48,11 +49,7 @@ export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
     CitiesResultListWrapperComponent,
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
+    CoreModule,
     SharedModule,
     NgxsModule.forRoot([CitiesState], {
       developmentMode: !environment.production,
