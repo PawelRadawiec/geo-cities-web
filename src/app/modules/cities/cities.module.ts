@@ -8,6 +8,7 @@ import { CityCardComponent } from './components/city-card/city-card.component';
 import { CitiesResultListWrapperComponent } from './components/cities-result-list-wrapper/cities-result-list-wrapper.component';
 import { CitiesResultListComponent } from './components/cities-result-list/cities-result-list.component';
 import { SharedModule } from '../shared/shared.module';
+import { CityDetailsComponent } from './components/city-details/city-details.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     CityCardComponent,
     CitiesResultListWrapperComponent,
     CitiesResultListComponent,
+    CityDetailsComponent
   ],
   imports: [CommonModule, CitiesRoutingModule, SharedModule],
   exports: [
@@ -24,6 +26,7 @@ import { SharedModule } from '../shared/shared.module';
     CityCardComponent,
     CitiesResultListWrapperComponent,
     CitiesResultListComponent,
+    CityDetailsComponent
   ],
 })
 export class CitiesModule {}

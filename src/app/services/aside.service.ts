@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CityDetailsComponent } from '../pages/modules/aside/city-details/city-details.component';
+import { CityDetailsComponent } from '../modules/cities/components/city-details/city-details.component';
 import { AsideData } from '../pages/modules/aside/main-aside/main-aside.component';
 
 @Injectable({
