@@ -14,6 +14,6 @@ export class CityDetailsComponent implements OnInit {
   ngOnInit() {}
 
   close() {
-    this.asideService.closeAside();
+    this.asideService.closeAside(CityDetailsComponent);
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { CityDetailsComponent } from '../modules/cities/components/city-details/city-details.component';
 import { AsideData } from '../modules/core/components/main-aside/main-aside.component';
 
 @Injectable({
@@ -16,8 +15,8 @@ export class AsideService {
     this._openSubject.next(asideData);
   }
 
-  closeAside() {
-    this._closeSubject.next({ component: CityDetailsComponent, data: {} });
+  closeAside(component: any) {
+    this._closeSubject.next({ component, data: {} });
   }
 
   get openSubject() {
