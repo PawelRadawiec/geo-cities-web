@@ -1,69 +1,66 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnDestroy,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
-import { Dictionary } from 'src/app/common/models/dictionay.model';
+import { SearchCitiesFormService } from 'src/app/services/search-cities-form.service';
+import { CitiesActions } from 'src/app/state/cities/cities.actions';
 
 @Component({
   selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.css'],
 })
-export class SearchFormComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() form: FormGroup;
-  @Input() sortData: Dictionary[];
-  @Input() timezoneData: Dictionary[];
-  @Input() limitData: Dictionary[];
-  @Output() onSearch = new EventEmitter();
-
+export class SearchFormComponent implements OnInit, OnDestroy {
   searchForm: FormGroup;
   subscription = new Subscription();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    public formService: SearchCitiesFormService,
+    private store: Store
+  ) {}
 
   ngOnInit() {
-    this.initForm();
+    this.searchForm = this.formService.createform();
     this.subscription.add(
       this.searchForm.get('sort')?.valueChanges.subscribe((sort) => {
         console.log('sort: ', sort);
       })
     );
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['form']) {
-      this.initForm();
-    }
+    this.subscription.add(
+      this.activatedRoute.params.subscribe((params) => {
+        this.handlAactivatedRouteParams(params);
+      })
+    );
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  search() {
-    this.onSearch.emit(this.searchForm.value);
+  handlAactivatedRouteParams(params: any) {
+    if (!params) {
+      return;
+    }
+    this.formService.appendForm(params);
+    this.store.dispatch(new CitiesActions.GetAllRequest(params));
   }
 
-  initForm() {
-    this.searchForm = this.form
-      ? this.form
-      : this.fb.group({
-          namePrefix: [],
-          location: [],
-          countryIdsArray: [[]],
-          excludedCountryIds: [[]],
-          minPopulation: [],
-          sort: [],
-          timezone: [],
-          limit: [],
-        });
+  search() {
+    const filters = this.searchForm.value;
+    for (const [key, value] of Object.entries(filters)) {
+      if (!value) delete filters[key];
+    }
+    if (filters?.countryIdsArray) {
+      filters.countryIds = filters.countryIdsArray.join(',');
+      delete filters.countryIdsArray;
+    }
+    if (filters?.excludedCountryIdsArray) {
+      filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
+      delete filters.excludedCountryIdsArray;
+    }
+    this.router.navigate(['cities/search', filters]);
   }
 }

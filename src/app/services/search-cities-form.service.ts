@@ -5,19 +5,19 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class SearchCitiesFormService {
   private _searchForm: FormGroup;
 
-  private _sortData = [
+  sortData = [
     { code: 'countryCode', text: 'Country code' },
     { code: 'elevation', text: 'Elevation' },
     { code: 'name', text: 'Name' },
     { code: 'population', text: 'Population' },
   ];
 
-  private _timezoneData = [
+  timezoneData = [
     { code: 'TEST_1', text: 'Test 1' },
     { code: 'TEST_2', text: 'Test 2' },
   ];
 
-  private _limitData = [
+  limitData = [
     { code: '5', text: '5' },
     { code: '10', text: '10' },
     { code: '50', text: '50' },
@@ -65,17 +65,5 @@ export class SearchCitiesFormService {
 
   get searchForm() {
     return this._searchForm;
-  }
-
-  get sortData() {
-    return this._sortData;
-  }
-
-  get timezoneData() {
-    return this._timezoneData;
-  }
-
-  get limitData() {
-    return this._limitData;
   }
 }
