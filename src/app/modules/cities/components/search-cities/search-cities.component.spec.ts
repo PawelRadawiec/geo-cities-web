@@ -12,15 +12,7 @@ describe('SearchCitiesComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ SearchCitiesComponent ],
-      imports: [NgxsModule.forRoot([CitiesState])],
-      providers: [
-        {
-          provide: 'CitiesService',
-          useValue: {
-            getAll: (filters: any) => EMPTY,
-          },
-        },
-      ]
+      imports: [NgxsModule.forRoot([CitiesState])]
     })
     .compileComponents();
   });

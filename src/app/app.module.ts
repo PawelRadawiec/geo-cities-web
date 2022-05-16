@@ -19,10 +19,7 @@ export const CITIES_SERVICE_TOKEN = new InjectionToken('CitiesService');
   imports: [
     CoreModule,
     SharedModule,
-    AppRoutingModule,
-    NgxsModule.forRoot([CitiesState], {
-      developmentMode: !environment.production,
-    }),
+    AppRoutingModule
   ],
   providers: [
     {

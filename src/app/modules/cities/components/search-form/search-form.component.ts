@@ -16,14 +16,15 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
 
   constructor(
+    private store: Store,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public formService: SearchCitiesFormService,
-    private store: Store
+    public formService: SearchCitiesFormService
   ) {}
 
   ngOnInit() {
     this.searchForm = this.formService.createform();
+    console.log('searchForm: ', this.searchForm);
     this.subscription.add(
       this.searchForm.get('sort')?.valueChanges.subscribe((sort) => {
         console.log('sort: ', sort);

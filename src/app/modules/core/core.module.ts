@@ -13,6 +13,9 @@ import { MainComponent } from './components/main/main.component';
 import { NavComponent } from './components/nav/nav.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { NgxsModule } from '@ngxs/store';
+import { CitiesState } from 'src/app/state/cities/cities.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,6 @@ import { RouterModule } from '@angular/router';
     MainAsideComponent,
     HomeComponent,
     AccountComponent,
-    MainAsideComponent,
   ],
   imports: [
     CommonModule,
@@ -32,7 +34,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -47,7 +49,6 @@ import { RouterModule } from '@angular/router';
     MainAsideComponent,
     HomeComponent,
     AccountComponent,
-    MainAsideComponent,
   ],
 })
 export class CoreModule {}

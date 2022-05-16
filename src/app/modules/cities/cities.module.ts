@@ -9,6 +9,9 @@ import { CitiesResultListWrapperComponent } from './components/cities-result-lis
 import { CitiesResultListComponent } from './components/cities-result-list/cities-result-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { CityDetailsComponent } from './components/city-details/city-details.component';
+import { NgxsModule } from '@ngxs/store';
+import { CitiesState } from 'src/app/state/cities/cities.state';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,16 +20,23 @@ import { CityDetailsComponent } from './components/city-details/city-details.com
     CityCardComponent,
     CitiesResultListWrapperComponent,
     CitiesResultListComponent,
-    CityDetailsComponent
+    CityDetailsComponent,
   ],
-  imports: [CommonModule, CitiesRoutingModule, SharedModule],
+  imports: [
+    CommonModule,
+    CitiesRoutingModule,
+    SharedModule,
+    NgxsModule.forRoot([CitiesState], {
+      developmentMode: !environment.production,
+    }),
+  ],
   exports: [
     SearchFormComponent,
     SearchCitiesComponent,
     CityCardComponent,
     CitiesResultListWrapperComponent,
     CitiesResultListComponent,
-    CityDetailsComponent
+    CityDetailsComponent,
   ],
 })
 export class CitiesModule {}

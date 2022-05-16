@@ -5,12 +5,11 @@ import { CitiesState } from './cities.state';
 export class CitiesSelectors {
   @Selector([CitiesState])
   static cities(state: CitiesStateModel) {
-    const cities = state.cities;
-    return cities ? cities : [];
+    return state?.cities ?? [];
   }
 
   @Selector([CitiesState])
   static cityDetails(state: CitiesStateModel) {
-    return state.cityDetails;
+    return state?.cityDetails;
   }
 }
