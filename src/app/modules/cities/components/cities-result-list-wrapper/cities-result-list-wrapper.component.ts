@@ -27,7 +27,6 @@ export class CitiesResultListWrapperComponent implements OnInit {
       .dispatch(new CitiesActions.GetDetailsRequest(city.id))
       .subscribe(() => {
         this.asideService.create(CityDetailsComponent);
-        this.asideService.create(CityDetailsComponent);
       });
   }
 }

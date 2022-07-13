@@ -8,7 +8,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { AsideDirective } from 'src/app/directives/aside.directive';
 import { HoverDirective } from 'src/app/directives/hover-directive';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -18,7 +17,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputComponent,
     SelectComponent,
     HoverDirective,
-    AsideDirective,
   ],
   exports: [
     ChipsComponent,
@@ -30,8 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatChipsModule,
     MatSelectModule,
     HoverDirective,
-    AsideDirective,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   imports: [
     CommonModule,
