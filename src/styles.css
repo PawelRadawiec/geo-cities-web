@@ -43,6 +43,9 @@ body {
 }
 
 app-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   grid-area: header;
   background-color: #e91e63;
 }
