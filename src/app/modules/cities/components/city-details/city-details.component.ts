@@ -1,19 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { AsideService } from 'src/app/services/aside.service';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import {
+  AppAside,
+  AsideOverlayService,
+} from 'src/app/services/aside-overlay.service';
+import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
 
 @Component({
   selector: 'app-city-details',
   templateUrl: './city-details.component.html',
   styleUrls: ['./city-details.component.css'],
 })
-export class CityDetailsComponent implements OnInit {
-  data: any;
+export class CityDetailsComponent implements OnInit, AppAside {
+  @Select(CitiesSelectors.cityDetails) city$: Observable<any>;
+  name = 'City Details';
 
-  constructor(private asideService: AsideService) {}
+  constructor(private asideService: AsideOverlayService) {}
 
   ngOnInit() {}
 
   close() {
-    this.asideService.closeAside(CityDetailsComponent);
+    this.asideService.close();
   }
 }

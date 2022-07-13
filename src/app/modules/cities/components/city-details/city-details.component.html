@@ -1,21 +1,24 @@
-<div class="aside">
-  <div class="aside__header">
-    <button mat-icon-button (click)="close()">
-      <mat-icon>close</mat-icon>
-    </button>
-  </div>
-  <div class="aside__content">
-    <h2 class="aside__content__header">Information</h2>
-    <div class="aside__content--details">
-      <p><span>Name:</span> {{ data?.name }}</p>
-      <p><span>Type:</span> {{ data?.type }}</p>
-      <p><span>City:</span> {{ data?.city }}</p>
-      <p><span>Country:</span> {{ data?.country }}</p>
-      <p><span>Country code:</span> {{ data?.countryCode }}</p>
-      <p><span>Latitude:</span> {{ data?.latitude }}</p>
-      <p><span>Longitude:</span> {{ data?.longitude }}</p>
-      <p><span></span>Population: {{ data?.population }}</p>
+<ng-container *ngIf="city$ | async as city">
+  <div class="aside">
+    <div class="aside__header">
+      <h1>{{ name }}</h1>
+      <button mat-icon-button (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
-    <h2 class="aside__content__header">Localization</h2>
+    <div class="aside__content">
+      <h2 class="aside__content__header">Information</h2>
+      <div class="aside__content--details">
+        <p><span>Name:</span> {{ city?.name }}</p>
+        <p><span>Type:</span> {{ city?.type }}</p>
+        <p><span>City:</span> {{ city?.city }}</p>
+        <p><span>Country:</span> {{ city?.country }}</p>
+        <p><span>Country code:</span> {{ city?.countryCode }}</p>
+        <p><span>Latitude:</span> {{ city?.latitude }}</p>
+        <p><span>Longitude:</span> {{ city?.longitude }}</p>
+        <p><span></span>Population: {{ city?.population }}</p>
+      </div>
+      <h2 class="aside__content__header">Localization</h2>
+    </div>
   </div>
-</div>
+</ng-container>

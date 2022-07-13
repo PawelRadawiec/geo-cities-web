@@ -1,6 +1,12 @@
+.aside {
+  background-color: #393939;
+  height: 100vh;
+}
+
 .aside__header {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
+  padding: 12px 24px;
 }
 
 .aside__content {
