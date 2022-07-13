@@ -1,6 +1,6 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -110,14 +110,14 @@ fdescribe('SearchFormComponent', () => {
 });
 
 const getEmptySearchForm = () => {
-  return new FormGroup({
-    namePrefix: new FormControl(),
-    location: new FormControl(),
-    countryIdsArray: new FormControl(),
-    excludedCountryIds: new FormControl(),
-    minPopulation: new FormControl(),
-    sort: new FormControl(),
-    timezone: new FormControl(),
-    limit: new FormControl(),
+  return new UntypedFormGroup({
+    namePrefix: new UntypedFormControl(),
+    location: new UntypedFormControl(),
+    countryIdsArray: new UntypedFormControl(),
+    excludedCountryIds: new UntypedFormControl(),
+    minPopulation: new UntypedFormControl(),
+    sort: new UntypedFormControl(),
+    timezone: new UntypedFormControl(),
+    limit: new UntypedFormControl(),
   });
 };
