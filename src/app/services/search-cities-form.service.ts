@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 @Injectable()
 export class SearchCitiesFormService {
-  private _searchForm: FormGroup;
+  private _searchForm: UntypedFormGroup;
 
   sortData = [
     { code: 'countryCode', text: 'Country code' },
@@ -23,7 +23,7 @@ export class SearchCitiesFormService {
     { code: '50', text: '50' },
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: UntypedFormBuilder) {}
 
   appendForm(params: any) {
     if (!this.searchForm) {

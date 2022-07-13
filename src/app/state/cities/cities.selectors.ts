@@ -5,7 +5,7 @@ import { CitiesState } from './cities.state';
 export class CitiesSelectors {
   @Selector([CitiesState])
   static cities(state: CitiesStateModel) {
-    return [...state?.cities, ...state?.cities, ...state?.cities] ?? [];
+    return state?.cities ?? [];
   }
 
   @Selector([CitiesState])

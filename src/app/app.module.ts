@@ -1,8 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { NgxsModule } from '@ngxs/store';
-import { CitiesState } from './state/cities/cities.state';
-import { environment } from 'src/environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth-interceptor';
 import { HttpCitiesService } from './services/cities/http-cities.service';

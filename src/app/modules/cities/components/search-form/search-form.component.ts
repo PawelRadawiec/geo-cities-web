@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { CitiesActions } from 'src/app/state/cities/cities.actions';
   styleUrls: ['./search-form.component.css'],
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
-  searchForm: FormGroup;
+  searchForm: UntypedFormGroup;
   subscription = new Subscription();
 
   constructor(

@@ -19,6 +19,9 @@
         <p><span></span>Population: {{ city?.population }}</p>
       </div>
       <h2 class="aside__content__header">Localization</h2>
+      <app-localization
+        [localization]="localization$ | async"
+      ></app-localization>
     </div>
   </div>
 </ng-container>

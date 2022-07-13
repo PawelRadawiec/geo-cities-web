@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HoverDirective } from 'src/app/directives/hover-directive';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { LocalizationComponent } from './components/localization/localization.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputComponent,
     SelectComponent,
     HoverDirective,
+    LocalizationComponent,
   ],
   exports: [
     ChipsComponent,
@@ -29,6 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     HoverDirective,
     ReactiveFormsModule,
+    GoogleMapsModule,
+    LocalizationComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatChipsModule,
     MatSelectModule,
     ReactiveFormsModule,
+    GoogleMapsModule
   ],
 })
 export class SharedModule {}
