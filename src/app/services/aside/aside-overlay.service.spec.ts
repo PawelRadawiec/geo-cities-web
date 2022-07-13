@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AsideService } from './aside.service';
+import { AsideOverlayService } from './aside-overlay.service';
 
-describe('AsideService', () => {
-  let service: AsideService;
+describe('AsideOverlayService', () => {
+  let service: AsideOverlayService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AsideService);
+    service = TestBed.inject(AsideOverlayService);
   });
 
   it('should be created', () => {
