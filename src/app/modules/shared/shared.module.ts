@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HoverDirective } from 'src/app/directives/hover-directive';
 import { ReactiveFormsModule } from '@angular/forms';
+// import { GoogleMapsModule } from '@angular/google-maps';
+import { AppMapComponent } from './components/app-map/app-map.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputComponent,
     SelectComponent,
     HoverDirective,
+    AppMapComponent,
   ],
   exports: [
     ChipsComponent,
@@ -29,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSelectModule,
     HoverDirective,
     ReactiveFormsModule,
+    // GoogleMapsModule,
   ],
   imports: [
     CommonModule,
