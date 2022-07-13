@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import {
-  AppAside,
-  AsideOverlayService,
-} from 'src/app/services/aside-overlay.service';
+import { AppAside } from 'src/app/common/models/app-aside.model';
+import { AsideOverlayService } from 'src/app/services/aside/aside-overlay.service';
 import { CitiesSelectors } from 'src/app/state/cities/cities.selectors';
 
 @Component({

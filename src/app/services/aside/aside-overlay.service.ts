@@ -5,11 +5,8 @@ import {
 } from '@angular/cdk/overlay';
 import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
+import { AppAside } from 'src/app/common/models/app-aside.model';
 
-export interface AppAside {
-  name: string;
-  close: () => void;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +20,9 @@ export class AsideOverlayService {
   ) {}
 
   create(component: ComponentType<AppAside>) {
+    if (this.overlayRef) {
+      this.close();
+    }
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
       positionStrategy: this.positionBuilder.global().right(),
