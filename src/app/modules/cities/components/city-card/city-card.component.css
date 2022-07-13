@@ -1,12 +1,12 @@
 .card {
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
   height: 200px;
   border: 2px solid #e64980;
   border-radius: 5px;
   padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  overflow: scroll;
 }
 
 .card--hover {
@@ -16,7 +16,7 @@
 .card__header {
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 .card__title {
