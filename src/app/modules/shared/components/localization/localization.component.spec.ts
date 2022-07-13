@@ -1,20 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppMapComponent } from './app-map.component';
+import { LocalizationComponent } from './localization.component';
 
-describe('AppMapComponent', () => {
-  let component: AppMapComponent;
-  let fixture: ComponentFixture<AppMapComponent>;
+describe('LocalizationComponent', () => {
+  let component: LocalizationComponent;
+  let fixture: ComponentFixture<LocalizationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppMapComponent ]
+      declarations: [ LocalizationComponent ]
     })
     .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppMapComponent);
+    fixture = TestBed.createComponent(LocalizationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

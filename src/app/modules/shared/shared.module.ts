@@ -10,8 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { HoverDirective } from 'src/app/directives/hover-directive';
 import { ReactiveFormsModule } from '@angular/forms';
-// import { GoogleMapsModule } from '@angular/google-maps';
-import { AppMapComponent } from './components/app-map/app-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { LocalizationComponent } from './components/localization/localization.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { AppMapComponent } from './components/app-map/app-map.component';
     InputComponent,
     SelectComponent,
     HoverDirective,
-    AppMapComponent,
+    LocalizationComponent,
   ],
   exports: [
     ChipsComponent,
@@ -32,7 +32,8 @@ import { AppMapComponent } from './components/app-map/app-map.component';
     MatSelectModule,
     HoverDirective,
     ReactiveFormsModule,
-    // GoogleMapsModule,
+    GoogleMapsModule,
+    LocalizationComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +43,7 @@ import { AppMapComponent } from './components/app-map/app-map.component';
     MatChipsModule,
     MatSelectModule,
     ReactiveFormsModule,
+    GoogleMapsModule
   ],
 })
 export class SharedModule {}

@@ -1,6 +1,8 @@
 .aside {
   background-color: #393939;
   height: 100vh;
+  overflow: scroll;
+  max-width: 700px;
 }
 
 .aside__header {
