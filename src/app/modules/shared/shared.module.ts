@@ -12,6 +12,9 @@ import { HoverDirective } from 'src/app/directives/hover-directive';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { LocalizationComponent } from './components/localization/localization.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { A11yModule } from '@angular/cdk/a11y';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { LocalizationComponent } from './components/localization/localization.co
     ReactiveFormsModule,
     GoogleMapsModule,
     LocalizationComponent,
+    OverlayModule,
+    A11yModule,
+    LayoutModule,
   ],
   imports: [
     CommonModule,
@@ -43,7 +49,10 @@ import { LocalizationComponent } from './components/localization/localization.co
     MatChipsModule,
     MatSelectModule,
     ReactiveFormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    OverlayModule,
+    A11yModule,
+    LayoutModule,
   ],
 })
 export class SharedModule {}

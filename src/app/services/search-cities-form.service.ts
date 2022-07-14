@@ -63,6 +63,22 @@ export class SearchCitiesFormService {
     return countries?.match(/[A-Z][A-Z]/g) ?? [];
   }
 
+  getFilters() {
+    const filters = this._searchForm.value;
+    for (const [key, value] of Object.entries(filters)) {
+      if (!value) delete filters[key];
+    }
+    if (filters?.countryIdsArray) {
+      filters.countryIds = filters.countryIdsArray.join(',');
+      delete filters.countryIdsArray;
+    }
+    if (filters?.excludedCountryIdsArray) {
+      filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
+      delete filters.excludedCountryIdsArray;
+    }
+    return filters;
+  }
+
   get searchForm() {
     return this._searchForm;
   }
