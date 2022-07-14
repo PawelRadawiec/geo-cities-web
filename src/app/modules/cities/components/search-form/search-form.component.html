@@ -1,4 +1,4 @@
-<form [formGroup]="searchForm" (ngSubmit)="search()">
+<form class="search-form" [formGroup]="searchForm" (ngSubmit)="search()">
   <div
     class="search-form__header"
     cdkOverlayOrigin
@@ -27,6 +27,7 @@
   <ng-template
     cdkConnectedOverlay
     cdkConnectedOverlayHasBackdrop
+    cdkScrollable
     [cdkConnectedOverlayOrigin]="originOverlay"
     [cdkConnectedOverlayOpen]="show$ | async"
     [cdkConnectedOverlayPositions]="positions"
@@ -79,9 +80,14 @@
         [bindLabel]="'text'"
         formControlName="limit"
       ></app-select>
-      <button mat-mini-fab color="primary" (click)="showFilters(false)">
-        <mat-icon>close</mat-icon>
-      </button>
+      <div class="search-form__panel--buttons">
+        <button mat-mini-fab color="primary" (click)="cleanForm()">
+          <mat-icon>restore</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary" (click)="showFilters(false)">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
     </section>
   </ng-template>
 </form>

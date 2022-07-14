@@ -47,7 +47,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     this.show$ = merge(
       this.filterClick$,
       this.cdkConnected.overlayKeydown.pipe(
-        filter(({ code }) => code.toUpperCase() === 'ESCAPE'),
+        filter(({ code }) => code?.toUpperCase() === 'ESCAPE'),
         map(() => false)
       )
     );
@@ -66,22 +66,14 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   }
 
   search() {
-    const filters = this.searchForm.value;
-    for (const [key, value] of Object.entries(filters)) {
-      if (!value) delete filters[key];
-    }
-    if (filters?.countryIdsArray) {
-      filters.countryIds = filters.countryIdsArray.join(',');
-      delete filters.countryIdsArray;
-    }
-    if (filters?.excludedCountryIdsArray) {
-      filters.excludedCountryIds = filters.excludedCountryIdsArray.join(',');
-      delete filters.excludedCountryIdsArray;
-    }
-    this.router.navigate(['cities/search', filters]);
+    this.router.navigate(['cities/search', this.formService.getFilters()]);
   }
 
   showFilters(open: boolean) {
     this.filterClick.next(open);
+  }
+
+  cleanForm() {
+    this.searchForm = this.formService.createform();
   }
 }
