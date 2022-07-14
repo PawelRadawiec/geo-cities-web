@@ -9,7 +9,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { MainComponent } from './components/main/main.component';
-import { NavComponent } from './components/nav/nav.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 
@@ -19,7 +18,6 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     MainComponent,
     SidebarComponent,
-    NavComponent,
     HomeComponent,
     AccountComponent,
   ],
@@ -29,7 +27,7 @@ import { RouterModule } from '@angular/router';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     CommonModule,
@@ -40,7 +38,6 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     MainComponent,
     SidebarComponent,
-    NavComponent,
     HomeComponent,
     AccountComponent,
   ],
