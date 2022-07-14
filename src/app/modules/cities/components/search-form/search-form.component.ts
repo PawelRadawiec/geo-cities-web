@@ -1,8 +1,9 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { CdkConnectedOverlay, ConnectedPosition } from '@angular/cdk/overlay';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { Subscription } from 'rxjs';
+import { filter, map, merge, Observable, Subject, Subscription } from 'rxjs';
 import { SearchCitiesFormService } from 'src/app/services/search-cities-form.service';
 import { CitiesActions } from 'src/app/state/cities/cities.actions';
 
@@ -12,8 +13,22 @@ import { CitiesActions } from 'src/app/state/cities/cities.actions';
   styleUrls: ['./search-form.component.css'],
 })
 export class SearchFormComponent implements OnInit, OnDestroy {
+  show$: Observable<boolean>;
   searchForm: UntypedFormGroup;
   subscription = new Subscription();
+  positions: ConnectedPosition[] = [
+    {
+      originX: 'center',
+      originY: 'bottom',
+      overlayX: 'center',
+      overlayY: 'top',
+    },
+  ];
+
+  @ViewChild(CdkConnectedOverlay, { static: true })
+  private cdkConnected: CdkConnectedOverlay;
+  private filterClick = new Subject<boolean>();
+  readonly filterClick$ = this.filterClick.asObservable();
 
   constructor(
     private store: Store,
@@ -24,16 +39,17 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchForm = this.formService.createform();
-    console.log('searchForm: ', this.searchForm);
-    this.subscription.add(
-      this.searchForm.get('sort')?.valueChanges.subscribe((sort) => {
-        console.log('sort: ', sort);
-      })
-    );
     this.subscription.add(
       this.activatedRoute.params.subscribe((params) => {
         this.handlAactivatedRouteParams(params);
       })
+    );
+    this.show$ = merge(
+      this.filterClick$,
+      this.cdkConnected.overlayKeydown.pipe(
+        filter(({ code }) => code.toUpperCase() === 'ESCAPE'),
+        map(() => false)
+      )
     );
   }
 
@@ -63,5 +79,9 @@ export class SearchFormComponent implements OnInit, OnDestroy {
       delete filters.excludedCountryIdsArray;
     }
     this.router.navigate(['cities/search', filters]);
+  }
+
+  showFilters(open: boolean) {
+    this.filterClick.next(open);
   }
 }
