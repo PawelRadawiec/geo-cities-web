@@ -29,7 +29,7 @@ body {
 
   grid-template-areas:
     "header header"
-    "nav content"
+    "content content"
     "footer footer";
 }
 
@@ -41,11 +41,9 @@ app-header {
   background-color: #e91e63;
 }
 
-app-nav {
-  position: fixed;
-  top: 70px;
-  z-index: 2;
-  grid-area: nav;
+app-sidebar {
+  /* position: fixed;
+  top: 70px; */
 }
 
 app-main {

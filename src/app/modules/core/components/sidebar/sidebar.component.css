@@ -1,0 +1,14 @@
+.sidebar-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 50px;
+  height: 700px;
+  width: 100px;
+  padding: 5px;
+
+  background: #e91e63;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
