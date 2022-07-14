@@ -36,7 +36,7 @@
 
 .search-form__panel--buttons {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   gap: 16px;
   margin-top: 8px;
 

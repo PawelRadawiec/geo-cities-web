@@ -3,14 +3,14 @@ import {
   OverlayPositionBuilder,
   OverlayRef,
 } from '@angular/cdk/overlay';
-import { ComponentPortal, ComponentType } from '@angular/cdk/portal';
+import { ComponentPortal } from '@angular/cdk/portal';
 import { Injectable } from '@angular/core';
-import { AppAside } from 'src/app/common/models/app-aside.model';
+import { SidebarComponent } from '../modules/core/components/sidebar/sidebar.component';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AsideOverlayService {
+export class SidebarService {
   private overlayRef: OverlayRef;
 
   constructor(
@@ -18,16 +18,13 @@ export class AsideOverlayService {
     private positionBuilder: OverlayPositionBuilder
   ) {}
 
-  create(component: ComponentType<AppAside>) {
-    if (this.overlayRef) {
-      this.close();
-    }
+  open() {
     this.overlayRef = this.overlay.create({
       hasBackdrop: true,
-      positionStrategy: this.positionBuilder.global().right(),
+      positionStrategy: this.positionBuilder.global().left().top('120px'),
     });
-    const asidePortal = new ComponentPortal(component);
-    this.overlayRef.attach(asidePortal);
+    this.overlayRef.backdropClick().subscribe(() => this.close());
+    this.overlayRef.attach(new ComponentPortal(SidebarComponent));
   }
 
   close() {
